@@ -82,10 +82,13 @@ function App() {
                   <Button
                     className="botones"
                     variant="secondary"
-                    onClick={() => deleteActor(contact.id)}
+                    onClick={sortPopularity}
                   >
-                    Borrar
+                    Ordenar Popularidad
                   </Button>
+                  <button onClick={() => deleteActor(contact.id)}>
+                    Borrar
+                  </button>
                 </td>
               </tr>
             );

@@ -2,7 +2,6 @@ import { useState } from "react";
 import "./App.css";
 import contactsData from "./contacts.json";
 import Table from "react-bootstrap/Table";
-import Button from "react-bootstrap/Button";
 let contactsArray = contactsData.splice(0, 5);
 
 function App() {
@@ -39,19 +38,9 @@ function App() {
   return (
     <div className="App">
       <h1>IronContacts</h1>
-      <Button className="botones" variant="secondary" onClick={addNewContact}>
-        Agregar Actor
-      </Button>
-      <Button
-        className="botones"
-        variant="secondary"
-        onClick={sortAlphabetically}
-      >
-        Ordenar Alfabeticamente
-      </Button>
-      <Button className="botones" variant="secondary" onClick={sortPopularity}>
-        Ordenar Popularidad
-      </Button>
+      <button onClick={addNewContact}>Agregar Actor</button>
+      <button onClick={sortAlphabetically}>Ordenar Alfabeticamente</button>
+      <button onClick={sortPopularity}>Ordenar Popularidad</button>
       <Table striped bordered hover variant="dark">
         <thead>
           <tr>
@@ -79,13 +68,9 @@ function App() {
                 <td>{contact.wonOscar && <p>🏆</p>}</td>
                 <td>{contact.wonEmmy && <p>🏆</p>}</td>
                 <td>
-                  <Button
-                    className="botones"
-                    variant="secondary"
-                    onClick={() => deleteActor(contact.id)}
-                  >
+                  <button onClick={() => deleteActor(contact.id)}>
                     Borrar
-                  </Button>
+                  </button>
                 </td>
               </tr>
             );

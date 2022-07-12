@@ -79,13 +79,9 @@ function App() {
                 <td>{contact.wonOscar && <p>🏆</p>}</td>
                 <td>{contact.wonEmmy && <p>🏆</p>}</td>
                 <td>
-                  <Button
-                    className="botones"
-                    variant="secondary"
-                    onClick={() => deleteActor(contact.id)}
-                  >
+                  <button onClick={() => deleteActor(contact.id)}>
                     Borrar
-                  </Button>
+                  </button>
                 </td>
               </tr>
             );

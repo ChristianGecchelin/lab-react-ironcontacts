@@ -24,7 +24,10 @@ th {
 td {
   vertical-align: middle;
 }
-
+td button {
+  padding: 5px 10px;
+  outline: none;
+}
 .botones {
   margin: 10px;
 }

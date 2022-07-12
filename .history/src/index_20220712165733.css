@@ -12,19 +12,3 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-table {
-  width: 100vw;
-}
-th {
-  width: 15%;
-}
-.actorImage {
-  height: 200px;
-}
-td {
-  vertical-align: middle;
-}
-
-.botones {
-  margin: 10px;
-}

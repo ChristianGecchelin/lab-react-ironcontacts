@@ -1,8 +1,6 @@
 import { useState } from "react";
 import "./App.css";
 import contactsData from "./contacts.json";
-import Table from "react-bootstrap/Table";
-import Button from "react-bootstrap/Button";
 let contactsArray = contactsData.splice(0, 5);
 
 function App() {
@@ -11,48 +9,27 @@ function App() {
   const addNewContact = () => {
     let randomNumber = Math.floor(Math.random() * contactsData.length);
     let randomActor = contactsData[randomNumber];
-    if (!contacts.includes(randomActor)) {
-      setContacts((contacts) => [...contacts, randomActor]);
-    } else {
-      addNewContact();
-    }
+    setContacts((contacts) => [...contacts, randomActor]);
   };
   const sortAlphabetically = () => {
-    const sortedList = [...contacts].sort((a, b) =>
-      a.name > b.name ? 1 : a.name < b.name ? -1 : 0
-    );
-
-    setContacts(sortedList);
+    [...contacts].sort((a, b) => {
+      return a.name - b.name;
+    });
   };
   const sortPopularity = () => {
     const sortedList = [...contacts].sort((a, b) =>
       a.popularity > b.popularity ? 1 : a.popularity < b.popularity ? -1 : 0
     );
+    // actualizo el estado con la nueva lista ya ordenada
     setContacts(sortedList);
-  };
-  const deleteActor = (actorId) => {
-    const filteredContact = contacts.filter((contact) => {
-      return contact.id !== actorId;
-    });
-    setContacts(filteredContact);
   };
   return (
     <div className="App">
       <h1>IronContacts</h1>
-      <Button className="botones" variant="secondary" onClick={addNewContact}>
-        Agregar Actor
-      </Button>
-      <Button
-        className="botones"
-        variant="secondary"
-        onClick={sortAlphabetically}
-      >
-        Ordenar Alfabeticamente
-      </Button>
-      <Button className="botones" variant="secondary" onClick={sortPopularity}>
-        Ordenar Popularidad
-      </Button>
-      <Table striped bordered hover variant="dark">
+      <button onClick={addNewContact}>Agregar Actor</button>
+      <button onClick={sortAlphabetically}>Ordenar Alfabeticamente</button>
+      <button onClick={sortPopularity}>Ordenar Popularidad</button>
+      <table>
         <thead>
           <tr>
             <th>Picture</th>
@@ -60,7 +37,6 @@ function App() {
             <th>Popularity</th>
             <th>Won Oscar?</th>
             <th>Won Emmy?</th>
-            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -78,20 +54,11 @@ function App() {
                 <td>{contact.popularity}</td>
                 <td>{contact.wonOscar && <p>🏆</p>}</td>
                 <td>{contact.wonEmmy && <p>🏆</p>}</td>
-                <td>
-                  <Button
-                    className="botones"
-                    variant="secondary"
-                    onClick={() => deleteActor(contact.id)}
-                  >
-                    Borrar
-                  </Button>
-                </td>
               </tr>
             );
           })}
         </tbody>
-      </Table>
+      </table>
     </div>
   );
 }
